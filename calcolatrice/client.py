@@ -18,6 +18,7 @@ messaggio = json.dumps(messaggio) #json.dumps() trasforma un oggetto in una srin
 
 with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s: #viene creato il socket s
     s.sendto(messaggio.encode("UTF-8"), (SERVER_IP, SERVER_PORT)) #viene inviata la stringa codificata in byte all'indirizzo del server
-    risultato = s.recv() #riceve la risposta
+    risultato = s.recv(1024) #riceve la risposta
+    risultato = risultato.decode()
 #chiusura blocco width
 print(f"{primo_numero} {operazione} {secondo_numero} = {risultato}")
