@@ -17,6 +17,7 @@ def ris(primo_numero, operazione, secondo_numero):
 # Funzione eseguita in un thread per ogni client connesso
 def ricevi_comandi(sock_service, addr_client):
     with sock_service as sock_client:
+        print(f"Client: {addr_client}")
         dati = sock_client.recv(DIM_BUFFER).decode() #converte da byte a stringa json
         dati = json.loads(dati) #loads() converte da stringa a dizionario
         
